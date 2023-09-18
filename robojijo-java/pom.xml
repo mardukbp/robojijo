@@ -15,49 +15,20 @@
   </properties>
 
   <build>
-    <plugins>
-      <plugin>
+  <plugins>
+    <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>3.1.1</version>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.1</version>
         <configuration>
-          <archive>
-            <index>true</index>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <mainClass>Main</mainClass>
-            </manifest>
-          </archive>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-          <finalName>${name}</finalName>
-          <appendAssemblyId>false</appendAssemblyId>
+            <source>8</source>
+            <target>8</target>
         </configuration>
-        <executions>
-          <execution>
-            <id>make-assembly</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <configuration>
-                <compilerArgument>-parameters</compilerArgument>
-                <testCompilerArgument>-parameters</testCompilerArgument>
-                <source>8</source>
-                <target>8</target>
-            </configuration>
-        </plugin>
-    </plugins>
+    </plugin>
+  </plugins>
   </build>
 
-  <dependencies>
+ <dependencies>
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
