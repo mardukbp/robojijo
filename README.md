@@ -1,2 +1,1 @@
-# robojijo
-RoboJiJo: Robot Framework's dynamic API over JSON
+# RoboJiJo: Robot Framework's dynamic API over JSON
