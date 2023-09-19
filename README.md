@@ -7,7 +7,7 @@
 ```bash
 cd repl/java
 ./mvnw clean install
-cd ..
+cd ../..
 ```
 
 2. Build and install robotframework_robson-VERSION.whl
@@ -22,7 +22,7 @@ cd ..
 3. Build the Java keyword library
 
 ```bash
-cd example/javalib
+cd examples/javalib
 ./mvnw clean package
 cp target/javalib.jar ../lib/JavaLibrary/lib
 cd ..
