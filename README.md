@@ -1,21 +1,21 @@
-# RoboJiJo: Robot Framework's dynamic API over JSON
+# Robson: Robot Framework speaks JSON
 
 ## Usage
 
-1. Build and install robojijo-java-VERSION.jar
+1. Build and install robson-repl-VERSION.jar
 
 ```bash
-cd robojijo-java
+cd repl/java
 ./mvnw clean install
 cd ..
 ```
 
-2. Build and install robotframework_robojijo-VERSION.whl
+2. Build and install robotframework_robson-VERSION.whl
 
 ```bash
-cd robotframework-robojijo
+cd robotframework-robson
 python -m build
-pip install dist/robotframework_robojijo-VERSION.whl
+pip install dist/robotframework_robson-VERSION.whl
 cd ..
 ```
 
