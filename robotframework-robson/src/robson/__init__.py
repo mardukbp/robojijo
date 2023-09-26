@@ -44,7 +44,12 @@ class DynamicLibrary(object):
         self._repl.stdin.write(json.dumps(request) + '\n')
         response = self._repl.stdout.readline()
 
-        return json.loads(response)
+        try:
+            return json.loads(response)
+        except Exception:
+            raise RemoteError(
+                "The last line read from the REPL is not JSON: " + response
+            )
 
     def get_keyword_names(self) -> list[str]:
         return self._send_request("get_keyword_names", [])["result"]
