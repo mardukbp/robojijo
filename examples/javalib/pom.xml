@@ -27,6 +27,10 @@
               <addClasspath>true</addClasspath>
               <mainClass>org.example.Main</mainClass>
             </manifest>
+            <manifestEntries>
+              <!-- Remove 'WARNING: sun.reflect.Reflection.getCallerClass is not supported. This will impact performance.' -->
+              <Multi-Release>true</Multi-Release>
+            </manifestEntries>
           </archive>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
