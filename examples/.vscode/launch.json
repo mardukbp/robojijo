@@ -1,7 +1,7 @@
 {
-    // Verwendet IntelliSense zum Ermitteln möglicher Attribute.
-    // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
-    // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
@@ -26,19 +26,17 @@
             "presentation": {
                 "hidden": true
             },
-            "attachPython": false,
             "robotPythonPath": ["${workspaceFolder}/lib"],
-            "args": ["-L", "DEBUG"],
+            "attachPython": false,
             "pythonConfiguration": "RobotCode: Python"
         },
         {
             "name": "RobotCode: Python",
-            "type": "python",
+            "type": "debugpy",
             "request": "attach",
             "presentation": {
                 "hidden": true
-            },
-            "justMyCode": true
+            }
         }
     ]
 }

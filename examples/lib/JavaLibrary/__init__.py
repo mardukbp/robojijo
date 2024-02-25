@@ -5,6 +5,6 @@ from robson import DynamicLibrary
 
 class JavaLibrary(DynamicLibrary):
     def __init__(self):
-        jar = str(Path(realpath(__file__)).parent / "lib" / "javalib.jar")
+        jar = str(Path(realpath(__file__)).parent / "target" / "javalib.jar")
         cmd = ["java", "-jar", jar]
         super().__init__(cmd)

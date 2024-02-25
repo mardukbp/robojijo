@@ -1,0 +1,24 @@
+[project]
+name = "robotframework-robson"
+version = "1.0.0"
+description = "Robot Framework speaks JSON"
+authors = [
+    {name = "Marduk Bolaños", email = "marduk.bolanos@imbus.de"},
+]
+dependencies = [
+    "robotframework>=6.0",
+]
+requires-python = ">=3.6"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+
+[tool.flit.module]
+name = "robson"
+
+[build-system]
+requires = ["flit_core>=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+
+[tool.pdm]
+distribution = true
