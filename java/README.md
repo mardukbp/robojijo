@@ -1,14 +1,6 @@
-# JI/JO: Java
+# robotframework-robson
 
-A Maven archetype, or Gitt8r template or cookie cutter template
-to wrap a Java library in a JI/JO shell.
-
-## Layered design
- 
-1. STDIO
-2. JSON-RPC
-3. Robot Framework Dynamic Library API
-4. Library
+JSON REPL for exposing a Java library to Robot Framework using the RF Dynamic API
 
 ## Examples
 
