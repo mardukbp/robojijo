@@ -1,6 +1,6 @@
 import json
 from itertools import count
-from subprocess import Popen, PIPE
+from subprocess import Popen, PIPE, STDOUT
 import sys
 
 from robot.errors import RemoteError
@@ -10,11 +10,11 @@ from robot.libraries.Remote import RemoteResult
 class DynamicLibrary(object):
     def __init__(self, cmd: list[str]):
         self.args = cmd
-        self._repl = self.repl
+        self.repl = self._repl
         self.counter = count(1)
 
     @property
-    def repl(self):
+    def _repl(self):
         return self._start_repl(self.args)
 
     def _start_repl(self, args: list[str]):
@@ -22,13 +22,14 @@ class DynamicLibrary(object):
             args,
             stdout=PIPE,
             stdin=PIPE,
+            stderr=STDOUT,
             bufsize=1,
             universal_newlines=True,
             encoding="utf-8"
         )
 
     def __del__(self):
-        self._repl.terminate()
+        self.repl.terminate()
 
     def _send_request(self, method: str, args: list[str]):
         request = {
@@ -38,18 +39,16 @@ class DynamicLibrary(object):
             "id": next(self.counter)
         }
 
-        assert self._repl.stdout is not None
-        assert self._repl.stdin is not None
+        assert self.repl.stdout is not None
+        assert self.repl.stdin is not None
 
-        self._repl.stdin.write(json.dumps(request) + '\n')
-        response = self._repl.stdout.readline()
+        self.repl.stdin.write(json.dumps(request) + '\n')
+        response = self.repl.stdout.readline()
 
         try:
             return json.loads(response)
         except Exception:
-            raise RemoteError(
-                "The last line read from the REPL is not JSON: " + response
-            )
+            raise RemoteError(response)
 
     def get_keyword_names(self) -> list[str]:
         return self._send_request("get_keyword_names", [])["result"]
