@@ -5,7 +5,7 @@
 Install `robotframework-robson`:
 
 ```python
-pip install robotframework-robson
+pip install -f . robotframework-robson
 ```
 
 ## Defining keywords
