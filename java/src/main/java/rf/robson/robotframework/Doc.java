@@ -1,4 +1,4 @@
-package io.github.robson.robotframework;
+package rf.robson.robotframework;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -6,6 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Keyword {
-    String name();
+public @interface Doc {
+    String doc();
 }

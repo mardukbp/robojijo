@@ -1,4 +1,4 @@
-package io.github.robson.jsonrpc;
+package rf.robson.jsonrpc;
 
 public class Response {
     private final String jsonrpc;

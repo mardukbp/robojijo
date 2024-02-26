@@ -1,4 +1,4 @@
-package io.github.robson.robotframework;
+package rf.robson.robotframework;
 
 import java.lang.reflect.Method;
 import java.util.List;

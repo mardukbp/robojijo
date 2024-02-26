@@ -1,12 +1,12 @@
-package io.github.robson;
+package rf.robson;
 
 
-import io.github.robson.jsonrpc.JsonError;
-import io.github.robson.jsonrpc.Request;
-import io.github.robson.jsonrpc.Response;
+import rf.robson.robotframework.RobotLibrary;
+import rf.robson.jsonrpc.JsonError;
+import rf.robson.jsonrpc.Request;
+import rf.robson.jsonrpc.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
-import io.github.robson.robotframework.RobotLibrary;
 
 import java.io.PrintStream;
 import static java.nio.charset.StandardCharsets.UTF_8;

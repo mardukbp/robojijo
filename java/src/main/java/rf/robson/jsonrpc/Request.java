@@ -1,4 +1,4 @@
-package io.github.robson.jsonrpc;
+package rf.robson.jsonrpc;
 
 
 import org.json.JSONArray;

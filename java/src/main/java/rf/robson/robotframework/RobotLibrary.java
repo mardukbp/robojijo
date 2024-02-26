@@ -1,10 +1,10 @@
-package io.github.robson.robotframework;
+package rf.robson.robotframework;
 
 
-import io.github.robson.jsonrpc.JsonError;
-import io.github.robson.jsonrpc.Request;
-import io.github.robson.jsonrpc.IRequestHandler;
-import io.github.robson.jsonrpc.Response;
+import rf.robson.jsonrpc.JsonError;
+import rf.robson.jsonrpc.Request;
+import rf.robson.jsonrpc.IRequestHandler;
+import rf.robson.jsonrpc.Response;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

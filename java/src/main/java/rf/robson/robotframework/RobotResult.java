@@ -1,4 +1,4 @@
-package io.github.robson.robotframework;
+package rf.robson.robotframework;
 
 
 public class RobotResult {

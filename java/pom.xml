@@ -7,7 +7,7 @@
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>robson</name>
+  <name>robotframework-robson</name>
   <url>http://maven.apache.org</url>
 
   <properties>

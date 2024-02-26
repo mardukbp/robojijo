@@ -1,4 +1,4 @@
-package io.github.robson.jsonrpc;
+package rf.robson.jsonrpc;
 
 public class JsonError {
     private final int code;
