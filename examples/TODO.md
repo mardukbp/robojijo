@@ -1,2 +1,0 @@
-- Support keyword args of type list and dict
-- each wrapper to a Java library should be a Python project that can be packaged into a Wheel

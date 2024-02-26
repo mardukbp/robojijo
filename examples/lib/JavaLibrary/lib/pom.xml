@@ -37,6 +37,7 @@
           </descriptorRefs>
           <finalName>${project.name}</finalName>
           <appendAssemblyId>false</appendAssemblyId>
+          <outputDirectory>${project.basedir}</outputDirectory>
         </configuration>
         <executions>
           <execution>
@@ -55,8 +56,8 @@
         <configuration>
           <compilerArgument>-parameters</compilerArgument>
           <testCompilerArgument>-parameters</testCompilerArgument>
-          <source>8</source>
-          <target>8</target>
+          <source>17</source>
+          <target>17</target>
         </configuration>
       </plugin>
     </plugins>
