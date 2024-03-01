@@ -53,6 +53,6 @@ public class RobotResult {
     }
 
     public static RobotResult fail(String error, String traceback) {
-        return new RobotResult("FAIL", null, null, error, traceback, true, false);
+        return new RobotResult("FAIL", null, null, error, traceback, false, false);
     }
 }
