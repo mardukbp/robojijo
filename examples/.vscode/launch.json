@@ -27,6 +27,7 @@
                 "hidden": true
             },
             "robotPythonPath": ["${workspaceFolder}/lib"],
+            "args": ["-L", "DEBUG"],
             "attachPython": false,
             "pythonConfiguration": "RobotCode: Python"
         },
