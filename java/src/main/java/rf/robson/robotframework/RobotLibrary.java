@@ -10,9 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
+import java.lang.reflect.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -81,8 +79,69 @@ public class RobotLibrary implements IRequestHandler {
         return keywords.get(keyword).types.toArray(new String[0]);
     }
 
+    private static int[] toIntArray(Object[] array) {
+        return Arrays.stream(array).mapToInt(Integer.class::cast).toArray();
+    }
+
+    private static double[] toDoubleArray(Object[] array) {
+        return Arrays.stream(array).mapToDouble(Double.class::cast).toArray();
+    }
+
+    private static String[] toStrArray(Object[] array) {
+        return Arrays.copyOf(array, array.length, String[].class);
+    }
+
+    private Object castArray(Object[] arg, String componentTypeName) {
+        if (componentTypeName.equals("double")) {
+            return toDoubleArray(arg);
+        }
+
+        if (componentTypeName.equals("double[]")) {
+            return Arrays.stream(arg)
+                    .map(arr -> toDoubleArray((Object[])arr))
+                    .toArray(double[][]::new);
+        }
+
+        if (componentTypeName.equals("int")) {
+            return toIntArray(arg);
+        }
+
+        if (componentTypeName.equals("int[]")) {
+            return Arrays.stream(arg)
+                    .map(arr -> toIntArray((Object[])arr))
+                    .toArray(int[][]::new);
+        }
+
+        if (componentTypeName.equals("java.lang.String")) {
+            return toStrArray(arg);
+        }
+
+        if (componentTypeName.equals("java.lang.String[]")) {
+            return Arrays.stream(arg)
+                    .map(arr -> toStrArray((Object[])arr))
+                    .toArray(String[][]::new);
+        }
+
+        return arg;
+    }
+
     public Object runKeyword(String keyword, Object[] args) throws InvocationTargetException, IllegalAccessException {
-        return keywords.get(keyword).method.invoke(this, args);
+        Method method = keywords.get(keyword).method;
+        Parameter[] parameters = method.getParameters();
+        Object[] typedArgs = new Object[args.length];
+
+        for (int i = 0; i < args.length; i++) {
+            Parameter param = parameters[i];
+
+            if (param.getType().isArray()) {
+                String componentTypeName = param.getType().getComponentType().getTypeName();
+                typedArgs[i] = castArray((Object[]) args[i], componentTypeName);
+            }
+            else
+                typedArgs[i] = args[i];
+        }
+
+        return method.invoke(this, typedArgs);
     }
 
     @Override
