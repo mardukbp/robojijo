@@ -10,21 +10,20 @@ pip install -f . robotframework-robson
 
 ## Defining keywords
 
-Keywords are methods of a class that have the annotations `@Keyword`, which allows specifying a name in a language other than English, and `@Doc`, which tells the user how to use and how to expect from the keyword.
+Keywords are the methods of a class that have the annotations:
 
-## Supported keyword argument types
+- `@Keyword`: allows specifying a name in a language other than English
+- `@Doc`: tells the user how to use and what to expect from the keyword
 
-The keywords that can be called using Robson can only have arguments with one of the following types:
+Keyword arguments with the following Java types are automatically converted:
 
-- int
-- float (or double)
-- string
+- int, int[], int[][]
+- double, double[], double[][]
+- String, String[], String[][]
+- Map<String, Integer>, Map<String, String>, Map<String, Double>, Map<String, Boolean>
 - boolean
 
-Since lists and maps can be arbitrarily nested, they must be passed as JSON strings. The keyword is responsible for parsing the JSON into the corresponding data structure.
-
-Correspondingly, lists and maps can only be returned as a JSON string. It can be parsed using the [JSONLibrary](https://robotframework-thailand.github.io/robotframework-jsonlibrary/JSONLibrary.html).
-
+Any other argument must have type `Object` and requires manual conversion within the keyword.
 
 ## Executing tests with RobotCode (VS Code extension)
 
