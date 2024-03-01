@@ -28,8 +28,33 @@ public class RobotLibrary implements IRequestHandler {
         put("int", "int");
         put("boolean", "bool");
         put("double", "float");
-        put("String", "str");
+        put("java.lang.String", "str");
+        put("java.lang.Integer", "int");
+        put("java.lang.Double", "float");
+        put("java.lang.Boolean", "bool");
     }};
+
+    private String getPythonType(Parameter param) {
+        if (param.getType().isArray()) {
+            String componentType = param.getType().getComponentType().getTypeName();
+
+            if (componentType.endsWith("[]")) {
+                String arrayComponentType = componentType.replace("[]", "");
+                return "list[list[" + pythonTypes.get(arrayComponentType) + "]]";
+            }
+            else
+                return "list[" + pythonTypes.get(componentType) + "]";
+        }
+        else if (param.getType().getTypeName().startsWith("java.util.Map")) {
+            ParameterizedType type = (ParameterizedType) param.getParameterizedType();
+            String keyType = type.getActualTypeArguments()[0].getTypeName();
+            String valueType = type.getActualTypeArguments()[1].getTypeName();
+
+            return "dict[" + pythonTypes.get(keyType) + "," + pythonTypes.get(valueType) + "]";
+        }
+        else
+            return pythonTypes.get(param.getType().getTypeName());
+    }
 
     private boolean isValidKeyword(Method method) {
         return method.isAnnotationPresent(Keyword.class) && method.isAnnotationPresent(Doc.class);
@@ -52,7 +77,7 @@ public class RobotLibrary implements IRequestHandler {
                                     method.getAnnotation(Keyword.class).name(),
                                     method.getAnnotation(Doc.class).doc(),
                                     Arrays.stream(method.getParameters()).map(Parameter::getName).collect(Collectors.toList()),
-                                    Arrays.stream(method.getParameterTypes()).map(type -> pythonTypes.get(type.getSimpleName())).collect(Collectors.toList())
+                                    Arrays.stream(method.getParameters()).map(this::getPythonType).collect(Collectors.toList())
                             ))
             ));
 
