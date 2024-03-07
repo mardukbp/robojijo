@@ -80,3 +80,5 @@ class DynamicLibrary(object):
 
         sys.stdout.write(rf_result.output)
         return rf_result.return_ # type: ignore
+
+    ROBOT_LIBRARY_SCOPE = 'SUITE'
