@@ -1,14 +1,16 @@
 import json
+import sys
+
 from itertools import count
 from subprocess import Popen, PIPE, STDOUT
-import sys
+from typing_extensions import List
 
 from robot.errors import RemoteError
 from robot.libraries.Remote import RemoteResult
 
 
 class DynamicLibrary(object):
-    def __init__(self, cmd: list[str]):
+    def __init__(self, cmd: List[str]):
         self.args = cmd
         self.repl = self._repl
         self.counter = count(1)
@@ -17,7 +19,7 @@ class DynamicLibrary(object):
     def _repl(self):
         return self._start_repl(self.args)
 
-    def _start_repl(self, args: list[str]):
+    def _start_repl(self, args: List[str]):
         return Popen(
             args,
             stdout=PIPE,
@@ -31,7 +33,7 @@ class DynamicLibrary(object):
     def __del__(self):
         self.repl.terminate()
 
-    def _send_request(self, method: str, args: list[str]):
+    def _send_request(self, method: str, args: List[str]):
         request = {
             "jsonrpc": "2.0",
             "method": method,
@@ -50,19 +52,19 @@ class DynamicLibrary(object):
         except Exception:
             raise RemoteError(response)
 
-    def get_keyword_names(self) -> list[str]:
+    def get_keyword_names(self) -> List[str]:
         return self._send_request("get_keyword_names", [])["result"]
 
-    def get_keyword_arguments(self, keyword) -> list[str]:
+    def get_keyword_arguments(self, keyword) -> List[str]:
         return self._send_request("get_keyword_arguments", [keyword])["result"]
 
-    def get_keyword_types(self, keyword) -> list[str]:
+    def get_keyword_types(self, keyword) -> List[str]:
         return self._send_request("get_keyword_types", [keyword])["result"]
 
     def get_keyword_documentation(self, keyword) -> str:
         return self._send_request("get_keyword_documentation", [keyword])["result"]
 
-    def run_keyword(self, name: str, args: list[str]): # type: ignore
+    def run_keyword(self, name: str, args: List[str]): # type: ignore
         json_response = self._send_request("run_keyword", [name, *args])
 
         if "result" in json_response:

@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:25eb776de1c294d566853c6f88d7211602723e5298eacb75d88c1ac29751eb9b"
+content_hash = "sha256:ec72321a42e1acc8a8b6c99016fde816f60ca6b6b3b9809fd5d1a0b5359d4818"
 
 [[package]]
 name = "robotframework"
@@ -16,4 +16,15 @@ groups = ["default"]
 files = [
     {file = "robotframework-6.0-py3-none-any.whl", hash = "sha256:fe3f4c6a88a93b8b404ccdbec35e022d237e8a381747523e651dddb501445b1f"},
     {file = "robotframework-6.0.zip", hash = "sha256:db9498dad21369a6702384db057994628cd2cf0a172f5685be941c4bf94e242f"},
+]
+
+[[package]]
+name = "typing-extensions"
+version = "4.1.1"
+requires_python = ">=3.6"
+summary = "Backported and Experimental Type Hints for Python 3.6+"
+groups = ["default"]
+files = [
+    {file = "typing_extensions-4.1.1-py3-none-any.whl", hash = "sha256:21c85e0fe4b9a155d0799430b0ad741cdce7e359660ccbd8b530613e8df88ce2"},
+    {file = "typing_extensions-4.1.1.tar.gz", hash = "sha256:1a9462dcc3347a79b1f1c0271fbe79e844580bb598bafa1ed208b94da3cdcd42"},
 ]
