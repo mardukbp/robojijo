@@ -4,7 +4,7 @@
 
 set dest=target
 
-rmdir /S /Q %dest%
+if exist %dest% rmdir /S /Q %dest%
 mkdir %dest%
 
 javac -cp deps/* src\main\java\org\example\*.java -encoding utf8 -parameters -d %dest%

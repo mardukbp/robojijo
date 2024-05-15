@@ -11,9 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
-@Doc(doc="""
-Some Java Library
-""")
+@Doc(doc="Example Java Library")
 public class JavaLibrary extends RobotLibrary {
     @Keyword(name="Sum list")
     @Doc(doc="Sum the integer numbers in a list")

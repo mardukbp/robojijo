@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Created-By: 17.0.4.1 (BellSoft)
 Build-Jdk-Spec: 1.8
-Class-Path: deps/robotframework-robson-1.0.jar deps/json-20231013.jar
+Class-Path: deps/robotframework-robson-1.0.2.jar deps/json-20231013.jar
 Main-Class: org.example.Main
 Multi-Release: true

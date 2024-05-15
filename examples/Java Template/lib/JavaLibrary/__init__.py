@@ -1,6 +1,6 @@
 from os.path import realpath
 from pathlib import Path
-from robson import DynamicLibrary
+from Robson import DynamicLibrary
 
 
 class JavaLibrary(DynamicLibrary):
