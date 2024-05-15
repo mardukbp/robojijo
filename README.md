@@ -1,6 +1,9 @@
-# Robson: Robot Framework speaks JSON
+# Robson: JSON-RPC-based dynamic library interface for Robot Framework
 
-For setup instructions and general information see [examples/README.md](examples/README.md)
-as well as the documentation of the example libraries in `examples/lib`.
+It consists of two parts:
 
-An example test suite is found in `examples/test.robot`.
+- the Python package [robotframework-robson](https://pypi.org/project/robotframework-robson) that implements a JSON-RPC client
+
+- A library in each supported programming language, that implements a JSON-RPC REPL
+
+    - Java: [robotframework-robson](https://central.sonatype.com/artifact/io.github.mardukbp/robotframework-robson)
