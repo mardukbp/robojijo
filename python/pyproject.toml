@@ -1,20 +1,25 @@
 [project]
 name = "robotframework-robson"
-version = "1.0.0"
-description = "Robot Framework speaks JSON"
+version = "1.0.3"
+description = "JSON-RPC-based dynamic library interface for Robot Framework"
 authors = [
     {name = "Marduk Bolaños", email = "marduk.bolanos@imbus.de"},
 ]
 dependencies = [
     "robotframework>=6.0",
-    "typing-extensions>=4.1.1",
+    "typing-extensions>=4.7.0",
+    "click>=8.0.4",
 ]
-requires-python = ">=3.6"
+requires-python = ">=3.7"
 readme = "README.md"
 license = {text = "Apache-2.0"}
+urls = { homepage = "https://github.com/mardukbp/robotframework-robson" }
+
+[project.scripts]
+robson = "Robson.robson:cli"
 
 [tool.flit.module]
-name = "robson"
+name = "Robson"
 
 [build-system]
 requires = ["flit_core>=3.2,<4"]
